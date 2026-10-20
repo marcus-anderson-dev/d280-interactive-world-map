@@ -1,0 +1,30 @@
+input {
+  padding: 8px;
+  width: 200px;
+}
+
+button {
+  padding: 8px 16px;
+  margin-left: 8px;
+}
+
+#wrapper {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+#map-column {
+  flex: 3;
+}
+
+#info-column {
+  flex: 1;
+  border-right: 2px solid #ccc;
+  padding-left: 20px;
+}
+
+#loading-info {
+  padding-top: 12px;
+  padding-left: 8px;
+}

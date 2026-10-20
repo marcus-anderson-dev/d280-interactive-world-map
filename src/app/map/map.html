@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<!-- 1st Column Requirement -->
+<div id="wrapper">
+  <div id="info-column">
+    <h3>Country Code Search</h3>
+    <div style="margin-top: 10px">
+      <input type="text" placeholder="Enter country code" [(ngModel)]="countryCode" />
+      <button (click)="onSearch()">Search</button>
+    </div>
+    <div id="loading-info">
+      <h3>Country Info</h3>
+      @if (loading()) {
+        <p>Loading...</p>
+      } @else if (selectedCountry()) {
+        <!--Required properties-->
+        <p><strong>Name:</strong> {{ selectedCountry()?.name }}</p>
+        <p><strong>Capital:</strong> {{ selectedCountry()?.capital }}</p>
+        <p><strong>Region:</strong> {{ selectedCountry()?.region }}</p>
+        <p><strong>Income Level:</strong> {{ selectedCountry()?.incomeLevel }}</p>
+
+        <!--Additional properties-->
+        <p><strong>Lending Type:</strong> {{ selectedCountry()?.lendingType }}</p>
+        <p><strong>Latitude:</strong> {{ selectedCountry()?.latitude }}</p>
+        <p><strong>Longitude:</strong> {{ selectedCountry()?.longitude }}</p>
+      } @else {
+        <p>Click the map or search by country code</p>
+      }
+    </div>
+  </div>
+
+  <!-- 2nd Column Requirement -->
+  <div id="map-column">
+    @if (mapError()) {
+      <div style="color: red; padding: 10px; border: 1px solid red; margin-bottom: 10px">
+        {{ mapError() }}
+      </div>
+    } @else {
+      <div
+        (click)="onMapClick($event)"
+        [innerHTML]="svgContent()"
+        style="width: 100%; cursor: pointer"
+      ></div>
+    }
+  </div>
+</div>

@@ -1,34 +1,30 @@
 # Interactive World Map
 
-An Angular single-page app with a clickable world map. Click any country, or search by country code, to see live data about it from the [World Bank API](https://datahelpdesk.worldbank.org/knowledgebase/articles/898590-country-api-queries).
+Angular page with clickable map. Click country, or search by country code, to see live data[World Bank API](https://datahelpdesk.worldbank.org/knowledgebase/articles/898590-country-api-queries).
 
-Built for WGU's D280 JavaScript Programming course.
+## Built for WGU's D280 JavaScript Programming course.
 
 ## Features
 
-- **Clickable SVG world map.** Each country in the SVG has its country code as its ID, so a click handler can tell which country was clicked.
-- **Country code search.** Enter a 2- or 3-letter code (for example `US` or `BRA`) to look up a country without using the map.
-- **Live country details** fetched from the World Bank API:
-  - name, capital, region and income level
-  - lending type, latitude and longitude
-- **Loading and error states.** Shows "Loading..." while a request is in flight, and a message if the map fails to load.
+- **Clickable SVG world map.** 
+- **Country code search.** Search by country code, 2- or 3-letter code (for example `US` or `BRA`).
+- **API used** fetched from the World Bank API
+- **Loading/Error states.** Displays "Loading..." while a starting a request, and a message if the map fails to load.
 
-## How it's built
+## Components of App
 
-| Piece | File | What it does |
-| --- | --- | --- |
-| **Map component** | `src/app/map/` | Loads the SVG, handles clicks and searches, and displays the selected country |
-| **Country service** | `src/app/services/country.ts` | Calls the World Bank API with `HttpClient` and maps the response into a typed `CountryData` object |
+| **Map component** | `src/app/map/` | Loads SVG, handles clicks and searching, displays the selected country |
+| **Country service** | `src/app/services/country.ts` | Sends a call with `HttpClient` and maps the response into `CountryData` object |
 | **Header component** | `src/app/components/header/` | Page title bar |
-| **Routing** | `src/app/app.routes.ts` | Redirects `/` to `/map` |
+| **Routing** | `src/app/app.routes.ts` | Redirects to / |
 
 Angular concepts used:
 
 - **Standalone components**, with no NgModules.
-- **Signals** (`signal()`) for the selected country, loading state and errors.
-- **New control flow syntax** (`@if` / `@else`) in templates.
-- **RxJS** `Observable`s and the `map` operator to transform API responses.
-- **Two-way binding** with `ngModel` for the search box.
+- **Signals** (`signal()`) for the selected country.
+- **Control flow syntax** (`@if` / `@else`) in templates.
+- **RxJS** `Observable `map` operator to transform API responses.
+- **Two-way binding** used `ngModel` for the country code search box.
 - **Dependency injection** of the country service and `HttpClient`.
 
 ## Running it
@@ -51,6 +47,6 @@ npm install
 npm start
 ```
 
-Then open http://localhost:4200.
+Open with http://localhost:4200.
 
 Built with Angular 21.
